@@ -3,21 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <title>Marion et Julien</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'Bombshell Pro';
+            font-style: normal;
+            font-weight: normal;
+            src: local('Bombshell Pro'), url('assets/Bombshell Pro.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'archer book webfont';
+            font-style: normal;
+            font-weight: normal;
+            src: local('archer book webfont'), url('assets/archer-book-webfont.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'archer book webfont';
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .hidden {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
 <h1 style="font-family:'Bombshell Pro';font-weight:normal;font-size:42px">Marion et Julien</h1>
 
-<nav style="font-family:'archer book webfont';">
-    <a href="/index.html">Accueil</a>
-    <a href="/css/">Déroulement de la journée</a>
-    <a href="/photos.html">Album photos</a>
-    <a href="/hebergements.html">Hébergements</a>
-    <a href="/acces.html">Plan d'accès</a>
-    <a href="/presence.html">Confirmer ma présence</a>
-    <a href="/voyage.html">Voyage de noce</a>
+<section class="date">
+    <h3>15 Septembre 2017</h3>
+    <div>
+
+    </div>
+</section>
+
+<nav id="menu">
+    <a href="#" data-name="index">Accueil</a>
+    <a href="#" data-name="journee">Déroulement de la journée</a>
+    <a href="#" data-name="photos">Album photos</a>
+    <a href="#" data-name="hebergements">Hébergements</a>
+    <a href="#" data-name="acces">Plan d'accès</a>
+    <a href="#" data-name="presence">Confirmer ma présence</a>
+    <a href="#" data-name="voyage">Voyage de noce</a>
 </nav>
 
+<section id="index" class="active">
+    <h1>Page d'accueil</h1>
+</section>
+<section id="journee" class="hidden">
+    <h1>Déroulement de la journée</h1>
+</section>
+<section id="photos" class="hidden">
+    <h1>Photos</h1>
+</section>
+<section id="hebergements" class="hidden">
+    <h1>Hébergements</h1>
+</section>
+<section id="acces" class="hidden">
+    <h1>Plan et itinéraire</h1>
+</section>
+<section id="presence" class="hidden">
+    <h1>Formulaire de confirmation</h1>
+</section>
+<section id="voyage" class="hidden">
+    <h1>Voyage de noce</h1>
+</section>
+
+<script>
+    var nodes = document.querySelectorAll("#menu a");
+    nodes.forEach(function(a){
+        a.addEventListener("click", function(node){
+            var activeSection = document.querySelector("section[class='active']");
+            activeSection.className = "hidden";
+
+            var section = document.querySelector("section[id='"+ node.currentTarget.dataset.name + "']");
+            section.className = "active";
+        });
+    }, false);
+</script>
 </body>
 </html>
