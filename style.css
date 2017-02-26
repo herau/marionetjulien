@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Bombshell Pro';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bombshell Pro'), url('Bombshell Pro.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'archer book webfont';
+    font-style: normal;
+    font-weight: normal;
+    src: local('archer book webfont'), url('archer-book-webfont.ttf') format('truetype');
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+}
