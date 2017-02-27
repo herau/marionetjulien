@@ -2,7 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Marion et Julien</title>
+    <title>Marion & Julien</title>
+    <!--<link rel=“preload” href="assets/Bombshell Pro.woff" as="font">-->
+    <!--<link rel=“preload” href="assets/archer-book-webfont.ttf" as="font">-->
     <style>
         @font-face {
             font-family: 'Bombshell Pro';
@@ -19,7 +21,7 @@
         }
 
         body {
-            font-family: 'archer book webfont';
+            font-family: 'archer book webfont', serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -28,8 +30,17 @@
         a {
             text-decoration: none;
             color: #000;
-            text-transform: uppercase;
+            /*text-transform: uppercase;*/
         }
+
+        h1 {
+            font-family: 'Bombshell Pro', serif;
+            font-weight: normal;
+        }
+
+        /*#menu > a {*/
+            /*padding-right: 1em;*/
+        /*}*/
 
         .hidden {
             display: none;
@@ -37,32 +48,42 @@
         .active {
             display: block;
         }
+
+        .date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .title {
+            margin-bottom: 0;
+        }
+        .menu {
+            padding-top: 2em;
+        }
     </style>
 </head>
 <body>
 
-<h1 style="font-family:'Bombshell Pro';font-weight:normal">Marion et Julien</h1>
+<h1 class="title">Marion & Julien</h1>
 <img src="assets/front.png" style="height:12em">
 
 <section class="date">
-    <h3>15 Septembre 2017</h3>
-    <div>
-
-    </div>
+    <h3 style="margin: 0">15 Septembre 2017</h3>
+    <span id="days" style="margin-top: 0; font-weight: bold"></span>
 </section>
 
-<nav id="menu">
-    <a href="#" data-name="index">Accueil</a>
-    <a href="#" data-name="journee">Déroulement de la journée</a>
-    <a href="#" data-name="photos">Album photos</a>
-    <a href="#" data-name="hebergements">Hébergements</a>
-    <a href="#" data-name="acces">Plan d'accès</a>
-    <a href="#" data-name="presence">Confirmer ma présence</a>
-    <a href="#" data-name="voyage">Voyage de noce</a>
+<nav class="menu">
+    <a href="#" data-name="index">Accueil</a><img src="assets/nav.png" style="height:1em">
+    <a href="#" data-name="journee">Déroulement de la journée</a><img src="assets/nav.png" style="height:1em">
+    <a href="#" data-name="photos">Album photos</a><img src="assets/nav.png" style="height:1em">
+    <a href="#" data-name="hebergements">Hébergements</a><img src="assets/nav.png" style="height:1em">
+    <a href="#" data-name="acces">Plan d'accès</a><img src="assets/nav.png" style="height:1em">
+    <a href="#" data-name="presence">Confirmer ma présence</a><img src="assets/nav.png" style="height:1em">
+    <a href="#" data-name="voyage">Voyage de noce</a><img src="assets/nav.png" style="height:1em">
 </nav>
 
 <section id="index" class="active">
-    <h1>Page d'accueil</h1>
+    <h1>Accueil</h1>
 </section>
 <section id="journee" class="hidden">
     <h1>Déroulement de la journée</h1>
@@ -77,15 +98,40 @@
     <h1>Plan et itinéraire</h1>
 </section>
 <section id="presence" class="hidden">
-    <h1>Formulaire de confirmation</h1>
+    <h3>Merci de nous confirmer votre présence avec le formulaire ci-dessous</h3>
+
+    <form>
+        <label>
+            Nom<br>
+            <input id="form-lastname" type="text" name="name" required />
+        </label>
+        <br>
+        <label>
+            Prénom<br>
+            <input id="form-firstname" type="text" name="name" required />
+        </label>
+        <br>
+        <label>
+            Email<br>
+            <input id="form-email" type="email" name="lastname" required>
+        </label>
+        <br>
+        <label>
+            Présence<br>
+            <input id="form-present" type="checkbox" name="present">
+        </label>
+        <br><br>
+        <input type="button" value="Valider" onclick="submitFunction()">
+    </form>
 </section>
 <section id="voyage" class="hidden">
     <h1>Voyage de noce</h1>
 </section>
 
-<script>
-    var nodes = document.querySelectorAll("#menu a");
-    nodes.forEach(function(a){
+<script type="text/javascript">
+
+    // switching sections according to the nav menu
+    document.querySelectorAll(".menu a").forEach(function(a) {
         a.addEventListener("click", function(node){
             var activeSection = document.querySelector("section[class='active']");
             activeSection.className = "hidden";
@@ -94,6 +140,24 @@
             section.className = "active";
         });
     }, false);
+
+    // Show difference days
+    var diffDays = Math.ceil(Math.abs(new Date().getTime() - new Date("09/15/2017").getTime()) / (1000 * 3600 * 24));
+    document.getElementById("days").innerHTML = "J-" + diffDays;
+
+    var submitFunction = function() {
+        var request = new XMLHttpRequest();
+        request.open("POST", "https://salty-ridge-13770.herokuapp.com/api/form");
+        request.setRequestHeader("Content-Type", "application/json");
+        request.setRequestHeader("Authorization", "Basic bWFyaW9uOmd6cWJwcjdhOTAyOQ==");
+
+        request.send(JSON.stringify({
+            name: document.getElementById("form-name").value,
+            email: document.getElementById("form-email").value,
+            present: !!document.getElementById("form-present").value
+        }));
+    };
+
 </script>
 </body>
 </html>
