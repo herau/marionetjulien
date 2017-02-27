@@ -10,7 +10,7 @@
             font-family: 'Bombshell Pro';
             font-style: normal;
             font-weight: normal;
-            src: local('Bombshell Pro'), url('assets/Bombshell Pro.woff') format('woff');
+            src: local('Bombshell Pro'), url('assets/Bombshell-Pro.ttf') format('truetype');
         }
 
         @font-face {
@@ -33,32 +33,57 @@
             /*text-transform: uppercase;*/
         }
 
-        h1 {
+        h1, h2 {
             font-family: 'Bombshell Pro', serif;
             font-weight: normal;
         }
 
-        /*#menu > a {*/
-            /*padding-right: 1em;*/
-        /*}*/
-
+        hr {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid black;
+            margin: 1em 0;
+            padding: 0;
+            width: 100%;
+        }
         .hidden {
             display: none;
         }
         .active {
             display: block;
         }
-
         .date {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 1em;
         }
         .title {
-            margin-bottom: 0;
+            margin: 0.225em 0 0 0;
+        }
+
+        .wedding-date {
+            margin: 0;
+        }
+
+        .days {
+            margin-top: 0;
+            font-weight: bold;
         }
         .menu {
-            padding-top: 2em;
+
+        }
+        .title-img {
+            height: 2em
+        }
+        section > h1 {
+            margin-bottom: 0
+        }
+        .presence-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
         }
     </style>
 </head>
@@ -68,10 +93,11 @@
 <img src="assets/front.png" style="height:12em">
 
 <section class="date">
-    <h3 style="margin: 0">15 Septembre 2017</h3>
-    <span id="days" style="margin-top: 0; font-weight: bold"></span>
+    <h3 class="wedding-date">15 Septembre 2017</h3>
+    <span class="days"></span>
 </section>
 
+<hr>
 <nav class="menu">
     <a href="#" data-name="index">Accueil</a><img src="assets/nav.png" style="height:1em">
     <a href="#" data-name="journee">Déroulement de la journée</a><img src="assets/nav.png" style="height:1em">
@@ -81,25 +107,31 @@
     <a href="#" data-name="presence">Confirmer ma présence</a><img src="assets/nav.png" style="height:1em">
     <a href="#" data-name="voyage">Voyage de noce</a><img src="assets/nav.png" style="height:1em">
 </nav>
+<hr>
 
 <section id="index" class="active">
     <h1>Accueil</h1>
+    <img src="assets/accueil.png" class="title-img"/>
 </section>
 <section id="journee" class="hidden">
     <h1>Déroulement de la journée</h1>
+    <img src="assets/accueil.png" class="title-img"/>
 </section>
 <section id="photos" class="hidden">
     <h1>Photos</h1>
+    <img src="assets/accueil.png" class="title-img"/>
 </section>
 <section id="hebergements" class="hidden">
     <h1>Hébergements</h1>
+    <img src="assets/accueil.png" class="title-img"/>
 </section>
 <section id="acces" class="hidden">
     <h1>Plan et itinéraire</h1>
+    <img src="assets/accueil.png" class="title-img"/>
 </section>
 <section id="presence" class="hidden">
-    <h3>Merci de nous confirmer votre présence avec le formulaire ci-dessous</h3>
-
+    <h1>Merci de nous confirmer votre présence avec le formulaire ci-dessous</h1>
+    <div class="presence-container">
     <form>
         <label>
             Nom<br>
@@ -117,15 +149,27 @@
         </label>
         <br>
         <label>
-            Présence<br>
-            <input id="form-present" type="checkbox" name="present">
+            Nombre de personnes<br>
+            <input id="form-people" type="number" min="1" name="lastname" required>
         </label>
-        <br><br>
+        <br>
+        <label>
+            Dont enfants de moins de 10 ans<br>
+            <input id="form-children" type="number" min="0" name="lastname" required>
+        </label>
+        <br>
+        <input name="form-present" type="radio" value="cocktail" />Assistera avec joie au cocktail<br/>
+        <input name="form-present" type="radio" value="cocktail+diner">Assistera avec joie au cocktail et au diner<br/>
+        <input name="form-present" type="radio" value="Ne viendra pas">Regrette de ne pouvoir être là<br/>
+        <br>
         <input type="button" value="Valider" onclick="submitFunction()">
     </form>
+        <img src="assets/formulaire.png" style="height: 12em">
+    </div>
 </section>
 <section id="voyage" class="hidden">
     <h1>Voyage de noce</h1>
+    <img src="assets/accueil.png" class="title-img"/>
 </section>
 
 <script type="text/javascript">
@@ -143,7 +187,7 @@
 
     // Show difference days
     var diffDays = Math.ceil(Math.abs(new Date().getTime() - new Date("09/15/2017").getTime()) / (1000 * 3600 * 24));
-    document.getElementById("days").innerHTML = "J-" + diffDays;
+    document.getElementsByClassName("days")[0].innerHTML = "J-" + diffDays;
 
     var submitFunction = function() {
         var request = new XMLHttpRequest();
@@ -152,7 +196,8 @@
         request.setRequestHeader("Authorization", "Basic bWFyaW9uOmd6cWJwcjdhOTAyOQ==");
 
         request.send(JSON.stringify({
-            name: document.getElementById("form-name").value,
+            firstname: document.getElementById("form-firstname").value,
+            lastname: document.getElementById("form-lastname").value,
             email: document.getElementById("form-email").value,
             present: !!document.getElementById("form-present").value
         }));
