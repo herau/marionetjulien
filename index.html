@@ -44,18 +44,22 @@
             padding: 0;
             width: 100%;
         }
+
         .hidden {
             display: none;
         }
+
         .active {
             display: block;
         }
+
         .date {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-bottom: 1em;
         }
+
         .title {
             margin: 0.225em 0 0 0;
         }
@@ -68,12 +72,11 @@
             margin-top: 0;
             font-weight: bold;
         }
-        .menu {
 
-        }
         .title-img {
             height: 2em
         }
+
         section > h1 {
             margin-bottom: 0
         }
@@ -82,6 +85,7 @@
             flex-direction: row;
             align-items: center;
         }
+
         .flex-column-container {
             display: flex;
             flex-direction: column;
@@ -112,92 +116,128 @@
 <hr>
 
 <section id="index" class="active">
-    <h1>Accueil</h1>
-    <img src="assets/accueil.png" class="title-img"/>
+    <div class="flex-column-container">
+        <h1 class="title">Accueil</h1>
+        <img src="assets/accueil.png" class="title-img"/>
+    </div>
 </section>
 
 <section id="journee" class="hidden">
-    <h1>Déroulement de la journée</h1>
-    <img src="assets/accueil.png" class="title-img"/>
-    <br>
-    <div class="flex-row-container">
-        <img src="assets/mariage.png" style="height:5em">
-        <div class="flex-column-container">
-            <div style="font-size: 1.225em">Passage devant Mr le Maire à 14h</div>
-            <div>66 rue de la mare au carats, 78180 Montigny-le-bretonneux</div>
-        </div>
+    <div class="flex-column-container">
+        <h1 class="title">Déroulement de la journée</h1>
+        <img src="assets/accueil.png" class="title-img"/>
     </div>
 
-    <img src="assets/eglise.png" style="height:5em">
-    <img src="assets/cocktail.png" style="height:5em">
-    <img src="assets/repas.png" style="height:5em">
-    <img src="assets/party.png" style="height:5em">
+    <div class="flex-row-container" style="justify-content: space-between;">
+        <img src="assets/mariage.png" style="width: 36px; height: 45px;">
+        <div class="flex-column-container">
+            <div style="font-size: 1.225em">Passage devant Mr le Maire à 14h</div>
+            <div>66 rue de la Mare aux Carats, 78180 Montigny-Le-Bretonneux</div>
+        </div>
+    </div>
+    <div class="flex-row-container" style="justify-content: space-between;">
+        <img src="assets/eglise.png" style="width: 58px; height: 50px;">
+        <div class="flex-column-container">
+            <div style="font-size: 1.225em">Mariage à l'église à 15h</div>
+            <div>Eglise Saint Martin, 4 rue Saint Martin, 78180 Montigny-Le-Bretonneux</div>
+        </div>
+    </div>
+    <div class="flex-row-container" style="justify-content: space-between;">
+        <img src="assets/cocktail.png" style="width: 59px; height: 45px;">
+        <div class="flex-column-container">
+            <div style="font-size: 1.225em">Cocktail à 18h</div>
+            <div>Domaine de la Butte Ronde, Chemin de l'Abime, 78125 La Boissière-Ecole</div>
+        </div>
+    </div>
+    <div class="flex-row-container" style="justify-content: space-between;">
+        <img src="assets/repas.png" style="width: 74px; height: 63px;">
+        <div class="flex-column-container">
+            <div style="font-size: 1.225em">Repas à 20h</div>
+            <div>Domaine de la Butte Ronde, Chemin de l'Abime, 78125 La Boissière-Ecole</div>
+        </div>
+    </div>
+    <div class="flex-row-container" style="justify-content: space-between;">
+        <img src="assets/party.png" style="width: 53px;
+    height: 71px;">
+        <div class="flex-column-container">
+            <div style="font-size: 1.225em">PartyTime à 23h30</div>
+        </div>
+    </div>
 </section>
 
 <section id="photos" class="hidden">
-    <h1>Photos</h1>
-    <img src="assets/accueil.png" class="title-img"/>
+    <div class="flex-column-container">
+        <h1 class="title">Photos</h1>
+        <img src="assets/accueil.png" class="title-img"/>
+    </div>
 </section>
 
 <section id="hebergements" class="hidden">
-    <h1>Hébergements</h1>
-    <img src="assets/accueil.png" class="title-img"/>
+    <div class="flex-column-container">
+        <h1 class="title">Hébergements</h1>
+        <img src="assets/accueil.png" class="title-img"/>
+    </div>
 </section>
 
 <section id="acces" class="hidden">
-    <h1>Plan et itinéraire</h1>
-    <img src="assets/accueil.png" class="title-img"/>
+    <div class="flex-column-container">
+        <h1 class="title">Plan et itinéraire</h1>
+        <img src="assets/accueil.png" class="title-img"/>
+    </div>
 </section>
 
 <section id="presence" class="hidden">
-    <h1>Merci de nous confirmer votre présence avec le formulaire ci-dessous</h1>
-    <div class="flex-row-container">
-    <form>
-        <label>
-            Nom<br>
-            <input id="form-lastname" type="text" name="name" required />
-        </label>
-        <br>
-        <label>
-            Prénom<br>
-            <input id="form-firstname" type="text" name="name" required />
-        </label>
-        <br>
-        <label>
-            Email<br>
-            <input id="form-email" type="email" name="lastname" required>
-        </label>
-        <br>
-        <label>
-            Nombre de personnes<br>
-            <input id="form-people" type="number" min="1" name="lastname" required>
-        </label>
-        <br>
-        <label>
-            Dont enfants de moins de 10 ans<br>
-            <input id="form-children" type="number" min="0" name="lastname" required>
-        </label>
-        <br>
-        <input name="form-present" type="radio" value="cocktail" />Assistera avec joie au cocktail<br/>
-        <input name="form-present" type="radio" value="cocktail+diner">Assistera avec joie au cocktail et au diner<br/>
-        <input name="form-present" type="radio" value="Ne viendra pas">Regrette de ne pouvoir être là<br/>
-        <br>
-        <input type="button" value="Valider" onclick="submitFunction()">
-    </form>
-        <img src="assets/formulaire.png" style="height: 12em">
+    <h1 class="title">Merci de nous confirmer votre présence avec le formulaire ci-dessous</h1>
+    <div class="flex-row-container" style="justify-content: space-around;">
+        <form>
+            <label>
+                Nom<br>
+                <input id="form-lastname" type="text" name="name" required/>
+            </label>
+            <br>
+            <label>
+                Prénom<br>
+                <input id="form-firstname" type="text" name="name" required/>
+            </label>
+            <br>
+            <label>
+                Email<br>
+                <input id="form-email" type="email" name="lastname" required>
+            </label>
+            <br>
+            <label>
+                Nombre de personnes<br>
+                <input id="form-people" type="number" min="1" name="lastname" required>
+            </label>
+            <br>
+            <label>
+                Dont enfants de moins de 10 ans<br>
+                <input id="form-children" type="number" min="0" name="lastname" required>
+            </label>
+            <br>
+            <input name="form-present" type="radio" value="cocktail"/>Assistera avec joie au cocktail<br/>
+            <input name="form-present" type="radio" value="cocktail+diner">Assistera avec joie au cocktail et au
+            diner<br/>
+            <input name="form-present" type="radio" value="Ne viendra pas">Regrette de ne pouvoir être là<br/>
+            <br>
+            <input type="button" value="Valider" onclick="submitFunction()">
+        </form>
+        <img src="assets/formulaire.png" style="max-height: 28em">
     </div>
 </section>
 
 <section id="voyage" class="hidden">
-    <h1>Voyage de noce</h1>
-    <img src="assets/accueil.png" class="title-img"/>
+    <div class="flex-column-container">
+        <h1 class="title">Voyage de noce</h1>
+        <img src="assets/accueil.png" class="title-img"/>
+    </div>
 </section>
 
 <script type="text/javascript">
 
     // switching sections according to the nav menu
-    document.querySelectorAll(".menu a").forEach(function(a) {
-        a.addEventListener("click", function(node){
+    document.querySelectorAll(".menu a").forEach(function (a) {
+        a.addEventListener("click", function (node) {
             var activeSection = document.querySelector("section[class='active']");
             activeSection.className = "hidden";
 
@@ -210,7 +250,7 @@
     var diffDays = Math.ceil(Math.abs(new Date().getTime() - new Date("09/15/2017").getTime()) / (1000 * 3600 * 24));
     document.getElementsByClassName("days")[0].innerHTML = "J-" + diffDays;
 
-    var submitFunction = function() {
+    var submitFunction = function () {
         var request = new XMLHttpRequest();
         request.open("POST", "https://salty-ridge-13770.herokuapp.com/api/form");
         request.setRequestHeader("Content-Type", "application/json");
