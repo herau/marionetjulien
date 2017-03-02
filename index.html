@@ -22,9 +22,6 @@
 
         body {
             font-family: 'archer book webfont', serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         a {
@@ -80,14 +77,19 @@
         section > h1 {
             margin-bottom: 0
         }
-        .presence-container {
+        .flex-row-container {
             display: flex;
             flex-direction: row;
             align-items: center;
         }
+        .flex-column-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     </style>
 </head>
-<body>
+<body class="flex-column-container">
 
 <h1 class="title">Marion & Julien</h1>
 <img src="assets/front.png" style="height:12em">
@@ -113,25 +115,43 @@
     <h1>Accueil</h1>
     <img src="assets/accueil.png" class="title-img"/>
 </section>
+
 <section id="journee" class="hidden">
     <h1>Déroulement de la journée</h1>
     <img src="assets/accueil.png" class="title-img"/>
+    <br>
+    <div class="flex-row-container">
+        <img src="assets/mariage.png" style="height:5em">
+        <div class="flex-column-container">
+            <div style="font-size: 1.225em">Passage devant Mr le Maire à 14h</div>
+            <div>66 rue de la mare au carats, 78180 Montigny-le-bretonneux</div>
+        </div>
+    </div>
+
+    <img src="assets/eglise.png" style="height:5em">
+    <img src="assets/cocktail.png" style="height:5em">
+    <img src="assets/repas.png" style="height:5em">
+    <img src="assets/party.png" style="height:5em">
 </section>
+
 <section id="photos" class="hidden">
     <h1>Photos</h1>
     <img src="assets/accueil.png" class="title-img"/>
 </section>
+
 <section id="hebergements" class="hidden">
     <h1>Hébergements</h1>
     <img src="assets/accueil.png" class="title-img"/>
 </section>
+
 <section id="acces" class="hidden">
     <h1>Plan et itinéraire</h1>
     <img src="assets/accueil.png" class="title-img"/>
 </section>
+
 <section id="presence" class="hidden">
     <h1>Merci de nous confirmer votre présence avec le formulaire ci-dessous</h1>
-    <div class="presence-container">
+    <div class="flex-row-container">
     <form>
         <label>
             Nom<br>
@@ -167,6 +187,7 @@
         <img src="assets/formulaire.png" style="height: 12em">
     </div>
 </section>
+
 <section id="voyage" class="hidden">
     <h1>Voyage de noce</h1>
     <img src="assets/accueil.png" class="title-img"/>
