@@ -65,8 +65,18 @@
 
         .menu {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 0 1em 0 1em;
         }
+
+        /*@media only screen and (max-width: 500px) {
+            .menu {
+                display: flex;
+                flex-direction: column;
+            }
+        }*/
 
         /* media query pour mobile flex-direction: row*/
 
@@ -106,6 +116,7 @@
         .title-img {
             display: block;
             margin: auto;
+            padding-bottom: 2em;
             height: 2em;
         }
 
@@ -137,9 +148,9 @@
 </section>
 
 <hr>
-<nav class="menu">
-    <ul>
-        <li><a href="#" data-name="index">Accueil</a><img src="assets/nav.png" style="height:1em"></li>
+<nav>
+    <ul class="menu">
+        <li class="first-nav-item"><a href="#" data-name="index">Accueil</a><img src="assets/nav.png" style="height:1em"></li>
         <li><a href="#" data-name="journee">Déroulement de la journée</a><img src="assets/nav.png" style="height:1em"></li>
         <li><a href="#" data-name="photos">Album photos</a><img src="assets/nav.png" style="height:1em"></li>
         <li><a href="#" data-name="hebergements">Hébergements</a><img src="assets/nav.png" style="height:1em"></li>
@@ -163,37 +174,36 @@
         <img src="assets/accueil.png" class="title-img"/>
     </div>
 
-    <div class="flex-row-container" style="justify-content: space-between;">
-        <img src="assets/mariage.png" style="width: 36px; height: 45px;" class="flex-00auto">
+    <div class="flex-row-container" style="margin-bottom: 1em;">
+        <img src="assets/mariage.png" style="width: 36px; height: 45px; padding-left: 1em;" class="flex-00auto">
         <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">Passage devant Mr le Maire à 14h</div>
             <div>66 rue de la Mare aux Carats, 78180 Montigny-Le-Bretonneux</div>
         </div>
     </div>
-    <div class="flex-row-container" style="justify-content: space-between;">
-        <img src="assets/eglise.png" style="width: 58px; height: 50px;" class="flex-00auto">
+    <div class="flex-row-container" style="margin-bottom: 1em;">
+        <img src="assets/eglise.png" style="width: 58px; height: 50px; padding-left: 1em;" class="flex-00auto">
         <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">Mariage à l'église à 15h</div>
             <div>Eglise Saint Martin, 4 rue Saint Martin, 78180 Montigny-Le-Bretonneux</div>
         </div>
     </div>
-    <div class="flex-row-container" style="justify-content: space-between;">
-        <img src="assets/cocktail.png" style="width: 59px; height: 45px;" class="flex-00auto">
+    <div class="flex-row-container" style="margin-bottom: 1em;">
+        <img src="assets/cocktail.png" style="width: 59px; height: 45px; padding-left: 1em;" class="flex-00auto">
         <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">Cocktail à 18h</div>
             <div>Domaine de la Butte Ronde, Chemin de l'Abime, 78125 La Boissière-Ecole</div>
         </div>
     </div>
-    <div class="flex-row-container" style="justify-content: space-between;">
-        <img src="assets/repas.png" style="width: 74px; height: 63px;" class="flex-00auto">
+    <div class="flex-row-container" style="margin-bottom: 1em;">
+        <img src="assets/repas.png" style="width: 74px; height: 63px; padding-left: 1em;" class="flex-00auto">
         <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">Repas à 20h</div>
             <div>Domaine de la Butte Ronde, Chemin de l'Abime, 78125 La Boissière-Ecole</div>
         </div>
     </div>
-    <div class="flex-row-container" style="justify-content: space-between;">
-        <img src="assets/party.png" style="width: 53px;
-    height: 71px;" class="flex-00auto">
+    <div class="flex-row-container" style="margin-bottom: 1em;">
+        <img src="assets/party.png" style="width: 53px; height: 71px; padding-left: 1em;" class="flex-00auto">
         <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">PartyTime à 23h30</div>
         </div>
@@ -224,38 +234,38 @@
 <section id="presence" class="hidden">
     <h1 class="title">Merci de nous confirmer votre présence avec le formulaire ci-dessous</h1>
     <div class="flex-row-container" style="justify-content: space-around;">
-        <form>
+        <form id="presence-form">
             <label>
                 Nom<br>
-                <input id="form-lastname" type="text" name="name" required/>
+                <input id="form-lastname" type="text" required/>
             </label>
             <br>
             <label>
                 Prénom<br>
-                <input id="form-firstname" type="text" name="name" required/>
+                <input id="form-firstname" type="text" required/>
             </label>
             <br>
             <label>
                 Email<br>
-                <input id="form-email" type="email" name="lastname" required>
+                <input id="form-email" type="email" required>
             </label>
             <br>
             <label>
                 Nombre de personnes<br>
-                <input id="form-people" type="number" min="1" name="lastname" required>
+                <input id="form-people" type="number" min="1" required>
             </label>
             <br>
             <label>
                 Dont enfants de moins de 10 ans<br>
-                <input id="form-children" type="number" min="0" name="lastname" required>
+                <input id="form-children" type="number" min="0" required>
             </label>
             <br>
-            <input name="form-present" type="radio" value="cocktail"/>Assistera avec joie au cocktail<br/>
-            <input name="form-present" type="radio" value="cocktail+diner">Assistera avec joie au cocktail et au
+            <input name="form-present" type="radio" value="cocktail" required/>Assistera avec joie au cocktail<br/>
+            <input name="form-present" type="radio" value="cocktail+diner" required>Assistera avec joie au cocktail et au
             diner<br/>
-            <input name="form-present" type="radio" value="Ne viendra pas">Regrette de ne pouvoir être là<br/>
+            <input name="form-present" type="radio" value="Ne viendra pas" required>Regrette de ne pouvoir être là<br/>
             <br>
-            <input type="button" value="Valider" onclick="submitFunction()">
+            <input type="submit" value="Valider">
         </form>
         <img src="assets/formulaire.png" style="max-height: 28em">
     </div>
@@ -285,19 +295,31 @@
     var diffDays = Math.ceil(Math.abs(new Date().getTime() - new Date("09/15/2017").getTime()) / (1000 * 3600 * 24));
     document.getElementsByClassName("days")[0].innerHTML = "J-" + diffDays;
 
-    var submitFunction = function () {
+    document.getElementById("presence-form").addEventListener("submit", function(e) {
+        if (e.preventDefault) e.preventDefault();
+
         var request = new XMLHttpRequest();
-        request.open("POST", "https://salty-ridge-13770.herokuapp.com/api/form");
+        request.open("POST", "https://salty-ridge-13770.herokuapp.com/api/form", true);
         request.setRequestHeader("Content-Type", "application/json");
         request.setRequestHeader("Authorization", "Basic bWFyaW9uOmd6cWJwcjdhOTAyOQ==");
+
+        request.onreadystatechange = function() {
+            if(request.readyState == 4 && request.status == 200) {
+                alert("Merci pour votre réponse");
+            }
+        };
 
         request.send(JSON.stringify({
             firstname: document.getElementById("form-firstname").value,
             lastname: document.getElementById("form-lastname").value,
             email: document.getElementById("form-email").value,
-            present: !!document.getElementById("form-present").value
+            people: +document.getElementById("form-people").value,
+            children: +document.getElementById("form-children").value,
+            present: document.querySelector('input[name="form-present"]:checked').value
         }));
-    };
+
+        return false;
+    });
 
 </script>
 </body>
