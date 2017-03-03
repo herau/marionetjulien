@@ -56,14 +56,42 @@
         }
 
         .date {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            /*display: flex;*/
+            /*flex-direction: column;*/
+            /*align-items: center;< */
+            text-align: center;
             margin-bottom: 1em;
         }
 
+        .menu {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* media query pour mobile flex-direction: row*/
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            flex: 1 1 auto;
+            flex-basis: auto;
+        }
+
         .title {
-            margin: 0.225em 0 0 0;
+            margin: auto;
+            text-align: center;
+        }
+
+        .flex-11auto {
+            flex: 1 1 auto;
+        }
+
+        .flex-00auto {
+            flex: 0 0 auto;
         }
 
         .wedding-date {
@@ -76,12 +104,15 @@
         }
 
         .title-img {
-            height: 2em
+            display: block;
+            margin: auto;
+            height: 2em;
         }
 
         section > h1 {
             margin-bottom: 0
         }
+
         .flex-row-container {
             display: flex;
             flex-direction: row;
@@ -95,10 +126,10 @@
         }
     </style>
 </head>
-<body class="flex-column-container">
+<body>
 
-<h1 class="title">Marion & Julien</h1>
-<img src="assets/front.png" style="height:12em">
+<h1 class="title" style="text-align: center">Marion & Julien</h1>
+<img src="assets/front.png" style="height:12em; display: block; margin: auto;">
 
 <section class="date">
     <h3 class="wedding-date">15 Septembre 2017</h3>
@@ -107,13 +138,15 @@
 
 <hr>
 <nav class="menu">
-    <a href="#" data-name="index">Accueil</a><img src="assets/nav.png" style="height:1em">
-    <a href="#" data-name="journee">Déroulement de la journée</a><img src="assets/nav.png" style="height:1em">
-    <a href="#" data-name="photos">Album photos</a><img src="assets/nav.png" style="height:1em">
-    <a href="#" data-name="hebergements">Hébergements</a><img src="assets/nav.png" style="height:1em">
-    <a href="#" data-name="acces">Plan d'accès</a><img src="assets/nav.png" style="height:1em">
-    <a href="#" data-name="presence">Confirmer ma présence</a><img src="assets/nav.png" style="height:1em">
-    <a href="#" data-name="voyage">Voyage de noce</a><img src="assets/nav.png" style="height:1em">
+    <ul>
+        <li><a href="#" data-name="index">Accueil</a><img src="assets/nav.png" style="height:1em"></li>
+        <li><a href="#" data-name="journee">Déroulement de la journée</a><img src="assets/nav.png" style="height:1em"></li>
+        <li><a href="#" data-name="photos">Album photos</a><img src="assets/nav.png" style="height:1em"></li>
+        <li><a href="#" data-name="hebergements">Hébergements</a><img src="assets/nav.png" style="height:1em"></li>
+        <li><a href="#" data-name="acces">Plan d'accès</a><img src="assets/nav.png" style="height:1em"></li>
+        <li><a href="#" data-name="presence">Confirmer ma présence</a><img src="assets/nav.png" style="height:1em"></li>
+        <li><a href="#" data-name="voyage">Voyage de noce</a><img src="assets/nav.png" style="height:1em"></li>
+    </ul>
 </nav>
 <hr>
 
@@ -125,43 +158,43 @@
 </section>
 
 <section id="journee" class="hidden">
-    <div class="flex-column-container">
+    <div>
         <h1 class="title">Déroulement de la journée</h1>
         <img src="assets/accueil.png" class="title-img"/>
     </div>
 
     <div class="flex-row-container" style="justify-content: space-between;">
-        <img src="assets/mariage.png" style="width: 36px; height: 45px;">
-        <div class="flex-column-container">
+        <img src="assets/mariage.png" style="width: 36px; height: 45px;" class="flex-00auto">
+        <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">Passage devant Mr le Maire à 14h</div>
             <div>66 rue de la Mare aux Carats, 78180 Montigny-Le-Bretonneux</div>
         </div>
     </div>
     <div class="flex-row-container" style="justify-content: space-between;">
-        <img src="assets/eglise.png" style="width: 58px; height: 50px;">
-        <div class="flex-column-container">
+        <img src="assets/eglise.png" style="width: 58px; height: 50px;" class="flex-00auto">
+        <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">Mariage à l'église à 15h</div>
             <div>Eglise Saint Martin, 4 rue Saint Martin, 78180 Montigny-Le-Bretonneux</div>
         </div>
     </div>
     <div class="flex-row-container" style="justify-content: space-between;">
-        <img src="assets/cocktail.png" style="width: 59px; height: 45px;">
-        <div class="flex-column-container">
+        <img src="assets/cocktail.png" style="width: 59px; height: 45px;" class="flex-00auto">
+        <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">Cocktail à 18h</div>
             <div>Domaine de la Butte Ronde, Chemin de l'Abime, 78125 La Boissière-Ecole</div>
         </div>
     </div>
     <div class="flex-row-container" style="justify-content: space-between;">
-        <img src="assets/repas.png" style="width: 74px; height: 63px;">
-        <div class="flex-column-container">
+        <img src="assets/repas.png" style="width: 74px; height: 63px;" class="flex-00auto">
+        <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">Repas à 20h</div>
             <div>Domaine de la Butte Ronde, Chemin de l'Abime, 78125 La Boissière-Ecole</div>
         </div>
     </div>
     <div class="flex-row-container" style="justify-content: space-between;">
         <img src="assets/party.png" style="width: 53px;
-    height: 71px;">
-        <div class="flex-column-container">
+    height: 71px;" class="flex-00auto">
+        <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">PartyTime à 23h30</div>
         </div>
     </div>
@@ -243,7 +276,7 @@
             var activeSection = document.querySelector("section[class='active']");
             activeSection.className = "hidden";
 
-            var section = document.querySelector("section[id='"+ node.currentTarget.dataset.name + "']");
+            var section = document.querySelector("section[id='" + node.currentTarget.dataset.name + "']");
             section.className = "active";
         });
     }, false);
