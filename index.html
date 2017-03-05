@@ -71,12 +71,11 @@
             padding: 0 1em 0 1em;
         }
 
-        /*@media only screen and (max-width: 500px) {
-            .menu {
-                display: flex;
-                flex-direction: column;
+        @media only screen and (max-width: 500px) {
+            #img-form {
+                display: none;
             }
-        }*/
+        }
 
         /* media query pour mobile flex-direction: row*/
 
@@ -98,10 +97,13 @@
 
         .flex-11auto {
             flex: 1 1 auto;
+            text-align: center;
         }
 
-        .flex-00auto {
-            flex: 0 0 auto;
+        .day-img {
+            height: auto;
+            width: 70px;
+            margin-bottom: 1em;
         }
 
         .wedding-date {
@@ -174,36 +176,36 @@
         <img src="assets/accueil.png" class="title-img"/>
     </div>
 
-    <div class="flex-row-container" style="margin-bottom: 1em;">
-        <img src="assets/mariage.png" style="width: 36px; height: 45px; padding-left: 1em;" class="flex-00auto">
+    <div class="flex-column-container" style="margin-bottom: 1em;">
+        <img src="assets/mariage.png" class="day-img">
         <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">Passage devant Mr le Maire à 14h</div>
             <div>66 rue de la Mare aux Carats, 78180 Montigny-Le-Bretonneux</div>
         </div>
     </div>
-    <div class="flex-row-container" style="margin-bottom: 1em;">
-        <img src="assets/eglise.png" style="width: 58px; height: 50px; padding-left: 1em;" class="flex-00auto">
+    <div class="flex-column-container" style="margin-bottom: 1em;">
+        <img src="assets/eglise.png" class="day-img">
         <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">Mariage à l'église à 15h</div>
             <div>Eglise Saint Martin, 4 rue Saint Martin, 78180 Montigny-Le-Bretonneux</div>
         </div>
     </div>
-    <div class="flex-row-container" style="margin-bottom: 1em;">
-        <img src="assets/cocktail.png" style="width: 59px; height: 45px; padding-left: 1em;" class="flex-00auto">
+    <div class="flex-column-container" style="margin-bottom: 1em;">
+        <img src="assets/cocktail.png" class="day-img">
         <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">Cocktail à 18h</div>
             <div>Domaine de la Butte Ronde, Chemin de l'Abime, 78125 La Boissière-Ecole</div>
         </div>
     </div>
-    <div class="flex-row-container" style="margin-bottom: 1em;">
-        <img src="assets/repas.png" style="width: 74px; height: 63px; padding-left: 1em;" class="flex-00auto">
+    <div class="flex-column-container" style="margin-bottom: 1em;">
+        <img src="assets/repas.png" class="day-img">
         <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">Repas à 20h</div>
             <div>Domaine de la Butte Ronde, Chemin de l'Abime, 78125 La Boissière-Ecole</div>
         </div>
     </div>
-    <div class="flex-row-container" style="margin-bottom: 1em;">
-        <img src="assets/party.png" style="width: 53px; height: 71px; padding-left: 1em;" class="flex-00auto">
+    <div class="flex-column-container" style="margin-bottom: 1em;">
+        <img src="assets/party.png" class="day-img">
         <div class="flex-column-container flex-11auto">
             <div style="font-size: 1.225em">PartyTime à 23h30</div>
         </div>
@@ -233,7 +235,7 @@
 
 <section id="presence" class="hidden">
     <h1 class="title">Merci de nous confirmer votre présence avec le formulaire ci-dessous</h1>
-    <div class="flex-row-container" style="justify-content: space-around;">
+    <div class="flex-row-container" style="justify-content: center;">
         <form id="presence-form">
             <label>
                 Nom<br>
@@ -267,7 +269,7 @@
             <br>
             <input type="submit" value="Valider">
         </form>
-        <img src="assets/formulaire.png" style="max-height: 28em">
+        <img src="assets/formulaire.png" style="max-height: 28em" id="img-form">
     </div>
 </section>
 
@@ -295,17 +297,22 @@
     var diffDays = Math.ceil(Math.abs(new Date().getTime() - new Date("09/15/2017").getTime()) / (1000 * 3600 * 24));
     document.getElementsByClassName("days")[0].innerHTML = "J-" + diffDays;
 
-    document.getElementById("presence-form").addEventListener("submit", function(e) {
+    var form = document.getElementById("presence-form");
+    form.addEventListener("submit", function(e) {
         if (e.preventDefault) e.preventDefault();
 
         var request = new XMLHttpRequest();
-        request.open("POST", "https://salty-ridge-13770.herokuapp.com/api/form");
+        var host = 'https://salty-ridge-13770.herokuapp.com';
+//        var host = 'http://localhost:8080';
+        request.open("POST", host + "/api/form", true);
         request.setRequestHeader("Content-Type", "application/json");
         request.setRequestHeader("Authorization", "Basic bWFyaW9uOmd6cWJwcjdhOTAyOQ==");
+//        request.setRequestHeader("Authorization", "Basic bWFyaW9uOjYwMWQxMjJjLThlNWQtNGZjZC1hNGIxLTczODZmMDJiNzFlMA==");
 
         request.onreadystatechange = function() {
             if(request.readyState == 4 && request.status == 200) {
-                alert("Merci pour votre réponse");
+                form.reset();
+                alert("Merci pour votre réponse \uD83D\uDC4C");
             }
         };
 
