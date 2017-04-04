@@ -183,20 +183,20 @@
             var diffDays = Math.ceil(Math.abs(new Date().getTime() - new Date("09/15/2017").getTime()) / (1000 * 3600 * 24));
             document.getElementsByClassName("days")[0].innerHTML = "J-" + diffDays;
 
+            var host = 'https://salty-ridge-13770.herokuapp.com/api/form';
+
             var form = document.getElementById("presence-form");
             form.addEventListener("submit", function (e) {
                 if (e.preventDefault) e.preventDefault();
 
                 var request = new XMLHttpRequest();
-                var host = 'https://salty-ridge-13770.herokuapp.com';
-                //        var host = 'http://localhost:8080';
-                request.open("POST", host + "/api/form", true);
+                request.open("POST", host, true);
                 request.setRequestHeader("Content-Type", "application/json");
                 request.setRequestHeader("Authorization", "Basic bWFyaW9uOmd6cWJwcjdhOTAyOQ==");
                 //        request.setRequestHeader("Authorization", "Basic bWFyaW9uOjYwMWQxMjJjLThlNWQtNGZjZC1hNGIxLTczODZmMDJiNzFlMA==");
 
                 request.onreadystatechange = function () {
-                    if (request.readyState == 4 && request.status == 200) {
+                    if (request.readyState === 4 && request.status === 200) {
                         form.reset();
                         alert("Merci pour votre réponse \uD83D\uDC4C");
                     }
@@ -212,6 +212,11 @@
 
                 return false;
             });
+
+            // wake up heroku dyno
+            var request = new XMLHttpRequest();
+            request.open("GET", host);
+            request.send();
         });
     </script>
     <script>
