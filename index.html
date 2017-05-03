@@ -169,7 +169,7 @@
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
             // switching sections according to the nav menu
-            document.querySelectorAll(".menu a[href='#']").forEach(function (a) {
+            Array.prototype.forEach.call(document.querySelectorAll(".menu a[href='#']"), function (a) {
                 a.addEventListener("click", function (node) {
                     var activeSection = document.querySelector("section[class='active']");
                     activeSection.className = "hidden";
